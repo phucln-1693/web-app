@@ -1,11 +1,12 @@
 const { disallow, iff } = require('feathers-hooks-common');
+const { validateUser } = require(`../../hooks/validate_user.js`);
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [validateUser],
     update: [disallow()],
     patch: [disallow()],
     remove: [disallow()]
