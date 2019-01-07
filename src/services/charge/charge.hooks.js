@@ -1,15 +1,16 @@
-const { disallow, iff } = require('feathers-hooks-common');
-const { validUser } = require(`../../hooks/beforeValidUser.js`);
+
+const { calculateBill } = require(`../../hooks/beforeCalculateBill.js`);
+// const { afterBilling } = require(`../../hooks/after_billing.js`);
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [validUser],
-    update: [disallow()],
-    patch: [disallow()],
-    remove: [disallow()]
+    create: [calculateBill],
+    update: [],
+    patch: [],
+    remove: []
   },
 
   after: {
