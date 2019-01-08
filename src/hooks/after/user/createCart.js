@@ -2,13 +2,13 @@ const { BadRequest, Conflict } = require(`@feathersjs/errors`);
 
 
 const createCart = async context => {
-  const { data } = context;
-  if (!data.user_name) throw new BadRequest(`user_name must exist`);
+  const { result } = context;
+  const userId = result._id.id.toString(`hex`);
+  if (!userId) throw new BadRequest(`userId must exist`);
 
-  const dataUser = await context.app.service(`user`).find({
-    query: {
-      user_name: `${data.user_name}`
-    }
+  await context.app.service(`cart`).create({
+    _id: userId,
+    goods: []
   });
 
   return context;
