@@ -43,6 +43,7 @@
     "mongodb-core": "^3.1.9",
     "mongoose": "^5.4.1",
     "serve-favicon": "^2.5.0",
+    "stripe": "^6.20.0",
     "winston": "^3.1.0"
   },
   "devDependencies": {
