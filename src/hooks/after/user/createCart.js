@@ -1,7 +1,7 @@
 const { BadRequest, Conflict } = require(`@feathersjs/errors`);
 
 
-const validUser = async context => {
+const createCart = async context => {
   const { data } = context;
   if (!data.user_name) throw new BadRequest(`user_name must exist`);
 
@@ -11,8 +11,7 @@ const validUser = async context => {
     }
   });
 
-  if (dataUser.total) throw new Conflict(`user already exist`);
   return context;
 }
 
-module.exports = { validUser };
+module.exports = { createCart };

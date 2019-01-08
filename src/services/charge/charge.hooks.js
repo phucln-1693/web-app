@@ -1,13 +1,12 @@
 
-const { calculateBill } = require(`../../hooks/beforeCalculateBill.js`);
-// const { afterBilling } = require(`../../hooks/after_billing.js`);
+// const { calculateBill } = require(`../../hooks/before/charge/calculateBill.js`);
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [calculateBill],
+    create: [],
     update: [],
     patch: [],
     remove: []
