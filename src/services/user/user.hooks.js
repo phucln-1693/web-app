@@ -1,5 +1,5 @@
 const { disallow, iff } = require('feathers-hooks-common');
-const { validUser } = require(`../../hooks/beforeValidUser.js`);
+const { validUser } = require(`../../hooks/before/user/validUser.js`);
 
 module.exports = {
   before: {
