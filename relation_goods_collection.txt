@@ -1,0 +1,14 @@
+mongo
+use web_app
+db.createCollection("goods")
+
+db.goods.insert({"_id": "0", "link": "link0", "price": 1})
+db.goods.insert({"_id": "1", "link": "link1", "price": 10})
+db.goods.insert({"_id": "2", "link": "link1", "price": 20})
+db.goods.insert({"_id": "3", "link": "link1", "price": 30})
+db.goods.insert({"_id": "4", "link": "link1", "price": 40})
+db.goods.insert({"_id": "5", "link": "link1", "price": 50})
+db.goods.insert({"_id": "6", "link": "link1", "price": 60})
+db.goods.insert({"_id": "7", "link": "link1", "price": 70})
+db.goods.insert({"_id": "8", "link": "link1", "price": 80})
+db.goods.insert({"_id": "9", "link": "link1", "price": 90})
