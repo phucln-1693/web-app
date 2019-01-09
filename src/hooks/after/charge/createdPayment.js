@@ -1,11 +1,10 @@
-const { BadRequest, Conflict, PaymentError } = require(`@feathersjs/errors`);
-const keyPublishable = `pk_test_4hdlCMzDeRUfh7zkBIfXG9O2`;
 const keySecret = `sk_test_xdlm5mgI9XwUvUL8dxd8ACmF`;
-const path = require(`path`);
 const stripe = require("stripe")(keySecret);
+const { INTERNAL_ERROR } = require(`../../../constants/errors.js`);
+const { HAPPY_SHOPPING, DESCRIPTION, USD } = require(`../../../constants/entities.js`);
 
 const payment = async context => {
-  context.result.message = `wish you: happy shopping`;
+  context.result.message = `${HAPPY_SHOPPING}`;
   const { data, result } = context;
   const amount = result.total;
 
@@ -16,18 +15,17 @@ const payment = async context => {
     .then(customer => {
       stripe.charges.create({
         amount,
-        description: "Sample Charge",
-        currency: "usd",
-        customer: customer.id,
-        receipt_email: "luong.ngoc.phuc@framgia.com"
+        description: `${DESCRIPTION}`,
+        currency: `${USD}`,
+        customer: customer.id
       })
     })
     .then(() => {
       return context;
     })
     .catch(err => {
-      if (err) console.log(`loi buoc thanh toan: ${JSON.stringify(err)}`);
-      throw Error(`loi thanh toan`);
+      if (err) console.log(`${INTERNAL_ERROR}: ${JSON.stringify(err)}`);
+      throw Error(`${INTERNAL_ERROR}`);
     })
 }
 

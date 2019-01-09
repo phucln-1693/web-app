@@ -1,5 +1,5 @@
 const { disallow } = require('feathers-hooks-common');
-const { rejectExternal } = require(`../../hooks/before/cart/createdRejectExternal.js`);
+const { internalOnly } = require(`../../hooks/before/cart/createdInternalOnly.js`);
 const { validItems } = require(`../../hooks/before/cart/updatedValidItems.js`);
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [rejectExternal],
+    create: [internalOnly],
     update: [validItems],
     patch: [disallow()],
     remove: [disallow()]

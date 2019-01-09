@@ -1,34 +1,34 @@
-const { BadRequest, Conflict, PaymentError } = require(`@feathersjs/errors`);
-const price = 5; // will update with other hook before get price soon
-
+const { CART, GOODS } = require(`../../../constants/entities.js`);
+const { MISSING_USER_ID } = require(`../../../constants/errors.js`);
 
 const calculateBill = async context => {
   const { id } = context.data;
-  if (!id) throw new PaymentError(`User ID must be provided!`);
-  const cart = await context.app.service(`cart`).find({
+  if (!id) throw new PaymentError(`${MISSING_USER_ID}`);
+  const cart = await context.app.service(`${CART}`).find({
     query: {
       _id: id
     }
   });
   const goods = cart.data[0].goods;
-  const arrId = [];
+  const arrGoodID = [];
   const dicGoods = {};
   for (let i = 0; i < goods.length; i++) {
     let tempId = goods[i]._id;
-    arrId.push(tempId);
+    arrGoodID.push(tempId);
     dicGoods[tempId] = goods[i];
   }
 
-  const goodsQueryDB = await context.app.service(`goods`).find({
+  // GET PRICE to calculate amount
+  const goodsQueryDB = await context.app.service(`${GOODS}`).find({
     query: {
       _id: {
-        $in: arrId
+        $in: arrGoodID
       }
     }
   });
   const goodsInDB = goodsQueryDB.data;
   for (let i = 0; i < goodsInDB.length; i++) {
-    if (arrId.indexOf(goodsInDB[i]._id) == -1) continue;
+    if (arrGoodID.indexOf(goodsInDB[i]._id) == -1) continue;
     dicGoods[goodsInDB[i]._id].price = goodsInDB[i].price;
   }
   let total = 0;
