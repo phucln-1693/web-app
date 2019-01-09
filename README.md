@@ -110,7 +110,7 @@ If you want view json format add this at end of each curl command:
 ```
     | json_pp
 ```
-Past those command on terminal to execute
+Paste those command on terminal to execute
 1. USER
     * GET-ALL user
     ```
