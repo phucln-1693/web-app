@@ -2,6 +2,7 @@
 const createService = require('feathers-mongoose');
 const createModel = require('../../models/user.model');
 const hooks = require('./user.hooks');
+const { USER } = require(`../../constants/entities.js`);
 
 module.exports = function (app) {
   const Model = createModel(app);
@@ -13,7 +14,7 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/user', createService(options));
+  app.use(`/${USER}`, createService(options));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('user');
