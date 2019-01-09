@@ -6,5 +6,5 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://localhost:27017/web_app"
+  "mongodb": "mongodb://heroku01:heroku01@ds151292.mlab.com:51292/web_app"
 }
