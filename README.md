@@ -76,7 +76,7 @@ to this value:
     ```
         https://boiling-badlands-29297.herokuapp.com/cart/5c3570d0fb99d348c61b6226
     ```
-    with header: `` and body as below
+    with header: `application/json` and body as below
     ```json
     {
         "goods": [{
