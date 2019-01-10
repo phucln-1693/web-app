@@ -37,6 +37,7 @@ to this value:
         https://boiling-badlands-29297.herokuapp.com/ | https://git.heroku.com/boiling-badlands-29297.git
     ```
 
+The first time you call post-man or curl will be a fews second because Heroku idle. The other will be quickly.
 ### POST MAN:
 1. USER
     * GET-ALL user

@@ -1,4 +1,4 @@
-mongo
+mongo ds151292.mlab.com:51292/web_app -u heroku01 -p heroku01
 use web_app
 db.createCollection("goods")
 
