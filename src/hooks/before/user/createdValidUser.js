@@ -14,6 +14,6 @@ const validUser = async context => {
 
   if (userData.total) throw new Conflict(`${CONFLIC_USER_NAME}`);
   return context;
-}
+};
 
 module.exports = { validUser };

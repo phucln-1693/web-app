@@ -26,6 +26,6 @@ const validItems = async context => {
   });
   if (goodsFromDB.data.length != goods.length) throw Error(`${INVALID_GOODS_ID}`);
   return context;
-}
+};
 
 module.exports = { validItems };

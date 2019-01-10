@@ -14,6 +14,6 @@ const createCart = async context => {
   });
 
   return context;
-}
+};
 
 module.exports = { createCart };

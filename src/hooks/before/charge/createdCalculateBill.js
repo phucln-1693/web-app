@@ -3,7 +3,7 @@ const { MISSING_USER_ID } = require(`../../../constants/errors.js`);
 
 const calculateBill = async context => {
   const { id } = context.data;
-  if (!id) throw new PaymentError(`${MISSING_USER_ID}`);
+  if (!id) throw new Error(`${MISSING_USER_ID}`);
   const cart = await context.app.service(`${CART}`).find({
     query: {
       _id: id
@@ -35,8 +35,8 @@ const calculateBill = async context => {
   for (let prop in dicGoods) {
     if (Reflect.has(dicGoods, prop)) total += dicGoods[prop].num * dicGoods[prop].price;
   }
-  context.data.total = total.toString()
+  context.data.total = total.toString();
   return context;
-}
+};
 
 module.exports = { calculateBill };

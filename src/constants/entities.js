@@ -5,8 +5,8 @@ const entities = {
   CART: `cart`,
   HEX: `hex`,
   REST: `rest`,
-  HAPPY_SHOPPING: "happy shopping",
-  DESCRIPTION: "charged for web_app",
-  USD: "usd"
-}
+  HAPPY_SHOPPING: `happy shopping`,
+  DESCRIPTION: `charged for web_app`,
+  USD: `usd`
+};
 module.exports = entities;

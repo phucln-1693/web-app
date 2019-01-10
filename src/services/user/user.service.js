@@ -1,4 +1,4 @@
-// Initializes the `user` service on path `/user`
+// Initializes the 'user' service on path '/user'
 const createService = require('feathers-mongoose');
 const createModel = require('../../models/user.model');
 const hooks = require('./user.hooks');

@@ -5,10 +5,12 @@
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-  const user = new Schema({
-    userName: { type: String, required: true },
-    password: { type: String, require: false }
-  }, {
+  const user = new Schema(
+    {
+      userName: { type: String, required: true },
+      password: { type: String, require: false }
+    },
+    {
       timestamps: true
     });
 

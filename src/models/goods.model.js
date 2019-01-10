@@ -5,11 +5,13 @@
 module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
-  const goods = new Schema({
-    _id: { type: String, required: true },
-    link: { type: String, require: true },
-    price: { type: String, require: true }
-  }, {
+  const goods = new Schema(
+    {
+      _id: { type: String, required: true },
+      link: { type: String, require: true },
+      price: { type: String, require: true }
+    },
+    {
       timestamps: true
     });
 
