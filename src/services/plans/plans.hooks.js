@@ -1,11 +1,12 @@
-
-
+const { createPlan } = require(`../../hooks/before/plan/createMakePlan.js`);
+const { getAPlan } = require(`../../hooks/after/plan/getAPlan.js`);
+const { getAllPlans } = require(`../../hooks/after/plan/findGetAllPlan.js`);
 module.exports = {
   before: {
     all: [],
     find: [],
-    get: [],
-    create: [],
+    get: [getAPlan],
+    create: [createPlan],
     update: [],
     patch: [],
     remove: []
@@ -13,7 +14,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [getAllPlans],
     get: [],
     create: [],
     update: [],

@@ -1,6 +1,6 @@
-const { createProd } = require(`../../hooks/after/products/createMakeProd.js`);
-const { getAllProds } = require(`../../hooks/after/products/findGetAllProd.js`);
-const { getAProd } = require(`../../hooks/after/products/getAProd.js`);
+const { createProd } = require(`../../hooks/before/product/createMakeProd.js`);
+const { getAllProds } = require(`../../hooks/after/product/findGetAllProd.js`);
+const { getAProd } = require(`../../hooks/after/product/getAProd.js`);
 
 module.exports = {
   before: {
