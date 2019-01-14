@@ -1,6 +1,6 @@
 const { disallow } = require('feathers-hooks-common');
 const { validUser } = require('../../hooks/before/user/createdValidUser.js');
-const { createCart } = require(`../../hooks/after/user/createdCart.js`);
+const { createCart } = require(`../../hooks/after/user/createCart.js`);
 
 module.exports = {
   before: {

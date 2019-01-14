@@ -5,5 +5,6 @@ module.exports = {
   PERMISSION_DENIED: 'permission denied',
   GOODS_MUST_BE_AN_ARRY: 'goods must be an array',
   INVALID_GOODS_ID: 'goods id does not exists',
-  INTERNAL_ERROR: 'internal error'
+  INTERNAL_ERROR: 'internal error',
+  INVALID_PARAM: 'invalid param'
 };
