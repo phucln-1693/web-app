@@ -5,6 +5,7 @@ const goods = require('./goods/goods.service.js');
 const products = require('./products/products.service.js');
 const plans = require('./plans/plans.service.js');
 const customers = require('./customers/customers.service.js');
+const tokens = require('./tokens/tokens.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(user);
@@ -14,4 +15,5 @@ module.exports = function (app) {
   app.configure(products);
   app.configure(plans);
   app.configure(customers);
+  app.configure(tokens);
 };
