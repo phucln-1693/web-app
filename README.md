@@ -37,7 +37,7 @@ to this value:
 ```
     The first time you call post-man or curl will be a few second because Heroku's idle. The others should be quickly.
 
-    Basic knowledge about feathers and stripe api is required.
+    Basic knowledge about feathers and stripe's api are required.
 ```
 
 ## Definition:
@@ -84,40 +84,21 @@ to this value:
 3. Create [plan](#plan). Plan let us know you want rent by: day, week, month or year ( interval=day). And when this will payment ( each 3 day, 1 week, 2 week, 3 month).
 4. Create [token](#token). With card's information. You will create a token ( used only once).
 5. Create [customer](#customer). With token create above. You will create a customer.
-6. Last step create [subscription](#subscription). Done this, you'll finished flow, rented a servce a goods. :tada:
+6. Last step create [subscription](#subscription). Subscription let us know quantity ( if plan's billing_schema is per_unit) you want pay for. Done this, you'll finished flow, rented a servce or goods. :tada:
 
-## 
+## The rest is about post-man and curl for Flow above
 
-######################################################
-<a name="user">Test user again</a>
-## A demo available at:
-    
-    https://boiling-badlands-29297.herokuapp.com/ | https://git.heroku.com/boiling-badlands-29297.git
-    
-
-
-The first time you call post-man or curl will be a few second because Heroku idle. The other should be quickly.
-
-
-
-
-This repo support charge but now focus on payment with plan.
-### Flow:
-1. Create User
-2. Create Token (use when create customer)
-3. Create plan
-4. Create subscription
 ### POST MAN:
 1. USER
-    * GET-ALL user
+    * GET-ALL
     ```
         https://boiling-badlands-29297.herokuapp.com/user    
     ```
-    * GET an user info
+    * GET
     ```
         https://boiling-badlands-29297.herokuapp.com/user/5c3570d0fb99d348c61b6226
     ```
-    * POST create an user
+    * POST
     ```
         https://boiling-badlands-29297.herokuapp.com/user
     ```
@@ -130,50 +111,119 @@ This repo support charge but now focus on payment with plan.
     ```
     userName must be unique
 
-2. CART
-    * POST:
-        Cart auto created when you create user. Call from external now disallowed.
+2. PRODUCT
+    * POST
+    ```
+        https://boiling-badlands-29297.herokuapp.com/products
+    ```
+    with header: `aplication/json` and body as below:
+    ```json
+        {
+            "name": "prod001",
+            "type": "service"
+        }
+    ```
+    * GET
+    ```
+        https://boiling-badlands-29297.herokuapp.com/products/prod_ELTWjf2qWFyMSr
+    ```
     * GET-ALL
     ```
-        https://boiling-badlands-29297.herokuapp.com/cart
+        https://boiling-badlands-29297.herokuapp.com/products
     ```
-    * GET info a cart
+3. PLAN
+    * POST
     ```
-        https://boiling-badlands-29297.herokuapp.com/cart/5c3570d0fb99d348c61b6226
+        https://boiling-badlands-29297.herokuapp.com/plans
     ```
-
-    * PUT update goods in cart
-    ```
-        https://boiling-badlands-29297.herokuapp.com/cart/5c3570d0fb99d348c61b6226
-    ```
-    with header: `application/json` and body as below
+    with hearder: `application/json` and body as below:
     ```json
-    {
-        "goods": [{
-            "_id": "1",
-            "num": 1
-        },{
-            "_id": "2",
-            "num": 4
-        },{
-            "_id": "3",
-            "num": 8
-        }, {
-            "_id": "4",
-            "num": 16
-        }]
-    }
+        {
+            "amount": "5475000",
+            "interval": "year",
+            "product": "prod_ELSeKVtAIdZoSl",
+            "currency": "usd",
+            "nickname": "For test yearly",
+            "interval_count": 1
+        }
     ```
-3. GOODS
-    * GET-ALL goods
+    Note: 
+        daily: plan_ELTgHnuFtX11a8
+        weekly: plan_ELTipEAGZnzXme
+        monthly: plan_ELTj14pCPBoLX5
+        yearly: plan_ELTmSXujyJgBjb
+    * GET
     ```
-        https://boiling-badlands-29297.herokuapp.com/goods
+        https://boiling-badlands-29297.herokuapp.com/plans/plan_ELTmSXujyJgBjb
     ```
-4. CHARGE
-    * CHARGE call from post-man now not available. Just click button `Pay with Card` when you access: https://boiling-badlands-29297.herokuapp.com
-    * The data now fixed with userID: `5c3570d0fb99d348c61b6226` has userName: `mLab01`
 
+    * GET-ALL plan: should I disable this api?
+    ```
+        https://boiling-badlands-29297.herokuapp.com/plans
+    ```
+4. TOKEN
+    * POST
+    ```
+        https://boiling-badlands-29297.herokuapp.com/tokens
+    ```
+    with header: `application/json` and body as below:
+    ```json
+        {
+        "number": "4242424242424242",
+        "exp_month": 12,
+        "exp_year": 2020,
+        "cvc": "123"
+        }
+    ```
+    At this time token api is support card only( stripe's support so many other method, see their docs to see detail: [tokens](https://stripe.com/docs/api/tokens)).
+    Remember tokens use only once.
 
+    * GET
+    ```
+        https://boiling-badlands-29297.herokuapp.com/tokens/tok_1DsmzHHpJ69RA3WHGoxEM9EV
+    ```
+    * GET-ALL: I disallowed this api.
+    ```
+    ```
+5. CUSTOMER
+    * POST
+    ```
+        https://boiling-badlands-29297.herokuapp.com/customers
+    ```
+    with header `application/json` and body as below:
+    ```json
+        {
+        "source": "tok_1DsmzHHpJ69RA3WHGoxEM9EV"
+        }
+    ```
+    * GET
+    ```
+        https://boiling-badlands-29297.herokuapp.com/customers/cus_ELU1pqi6gp5lQe
+    ```
+    * GET-ALL
+    ```
+        https://boiling-badlands-29297.herokuapp.com/customers
+    ```
+6. SUBSCRIPTION
+    * POST 
+    ```
+        https://boiling-badlands-29297.herokuapp.com/subscriptions
+    ```
+    with header: `application/json` and body as below:
+    ```json
+        {
+            "customer": "cus_ELU1pqi6gp5lQe",
+            "plans": [{"plan": "plan_ELTgHnuFtX11a8"}]
+        }
+    ```
+    * GET
+    ```
+        https://boiling-badlands-29297.herokuapp.com/subscriptions/sub_ELUDE8Utqxb2x4
+    ```
+    * GET-ALL
+    ```
+        https://boiling-badlands-29297.herokuapp.com/subscriptions
+    ```
 
 ### CURL
 If you want view json format add this at end of each curl command: 
