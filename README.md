@@ -232,42 +232,82 @@ If you want view json format add this at end of each curl command:
 ```
 Paste those command on terminal to execute
 1. USER
-    * GET-ALL user
+    * GET-ALL
     ```
         curl -X GET https://boiling-badlands-29297.herokuapp.com/user   
     ```
-    * GET an user info
+    * GET
     ```
         curl -X GET  https://boiling-badlands-29297.herokuapp.com/user/5c3570d0fb99d348c61b6226
     ```
-    * POST create an user
+    * POST
     ```
         curl -X POST  https://boiling-badlands-29297.herokuapp.com/user  -H 'Content-Type: application/json' -d '{ "userName": "your_user_name" }'
     ```
     userName must be unique
 
-2. CART
-    * POST:
-        Cart auto created when you create user. Call from external now disallowed.
+2. PRODUCT
+    * POST
+    ```
+        curl -X POST https://boiling-badlands-29297.herokuapp.com/products -H 'Content-Type: application/json' -d '{"name": "curlProd001","type": "service"}'
+    ```
+    * GET
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/products/prod_ELTWjf2qWFyMSr
+    ```
     * GET-ALL
     ```
-        curl -X GET  https://boiling-badlands-29297.herokuapp.com/cart 
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/products
     ```
-    * GET info a cart
+3. PLAN
+    * POST
     ```
-        curl -X GET  https://boiling-badlands-29297.herokuapp.com/cart/5c3570d0fb99d348c61b6226
+        curl -X POST https://boiling-badlands-29297.herokuapp.com/plans -H 'Content-Type: application/json' -d '{ "amount": "5475000", "interval": "year", "product": "prod_ELSeKVtAIdZoSl", "currency": "usd", "nickname": "For test yearly", "interval_count": 1 }'
     ```
-
-    * PUT update goods in cart
+    * GET
     ```
-        curl -X PUT https://boiling-badlands-29297.herokuapp.com/cart/5c3570d0fb99d348c61b6226  -H 'Content-Type: application/json' -d '{ "goods": [{ "_id": "1", "num": 1 },{ "_id": "2", "num": 4 },{ "_id": "3", "num": 8 }, { "_id": "4", "num": 16 }] }'
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/plans/plan_ELURlXKG7xc8ix
     ```
-3. GOODS
-    * GET-ALL goods
+    * GET-ALL
     ```
-        curl -X GET https://boiling-badlands-29297.herokuapp.com/goods
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/plans
     ```
-4. CHARGE
-    * SAME as post-man
-
-
+4. TOKEN
+    * POST
+    ```
+        curl -X POST https://boiling-badlands-29297.herokuapp.com/tokens -H 'Content-Type: application/json' -d '{ "number": "4242424242424242", "exp_month": 12, "exp_year": 2020, "cvc": "123" }'
+    ```
+    * GET
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/tokens/tok_1DsnVlHpJ69RA3WHgTUjRHU3
+    ```
+    * GET-ALL | Now I disallowed this api
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/tokens
+    ```
+5. CUSTOMER
+    * POST
+    ```
+       curl -X POST https://boiling-badlands-29297.herokuapp.com/customers -H 'Content-Type: application/json' -d '{ "source": "tok_1DsnVlHpJ69RA3WHgTUjRHU3" }' 
+    ```
+    * GET
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/customers/cus_ELUd9Jk8xNNyd4
+    ```
+    * GET-ALL
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/customers
+    ```
+6. SUBSCRIPTION
+    * POST
+    ```
+        curl -X POST https://boiling-badlands-29297.herokuapp.com/subscriptions -H 'Content-Type: application/json' -d '{"customer": "cus_ELU1pqi6gp5lQe","plans": [{"plan": "plan_ELTgHnuFtX11a8"}]}'
+    ```
+    * GET
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/subscriptions/sub_ELUgYbwEL1iCtj
+    ```
+    * GET-ALL
+    ```
+        curl -X GET https://boiling-badlands-29297.herokuapp.com/subscriptions
+    ```
