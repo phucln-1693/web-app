@@ -1,11 +1,11 @@
-
+const { createCustomer } = require(`../../hooks/before/customer/createMakeCustomer.js`);
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [createCustomer],
     update: [],
     patch: [],
     remove: []

@@ -24,8 +24,6 @@ const payment = async context => {
       return context;
     })
     .catch(() => {
-      // if (err) 
-      // console.log(`${INTERNAL_ERROR}: ${JSON.stringify(err)}`);
       throw Error(`${INTERNAL_ERROR}`);
     });
 };

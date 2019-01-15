@@ -4,12 +4,12 @@
 //   "goods": [{"_id": 7, "num": 5}, {"_id": 9, "num": 15}]
 // }
 const { GOODS } = require(`../../../constants/entities.js`);
-const { GOODS_MUST_BE_AN_ARRY, INVALID_GOODS_ID } = require(`../../../constants/errors.js`);
+const errorCode = require(`../../../constants/errors.js`);
 
 const validItems = async context => {
   const { data } = context;
   const goods = data.goods;
-  if (!Array.isArray(goods)) throw Error(`${GOODS_MUST_BE_AN_ARRY}`);
+  if (!Array.isArray(goods)) throw Error(`${errorCode.GOODS_MUST_BE_AN_ARRY}`);
 
   const arrGoodID = [];
   for (let i = 0; i < goods.length; i++) {
@@ -24,7 +24,7 @@ const validItems = async context => {
       }
     }
   });
-  if (goodsFromDB.data.length != goods.length) throw Error(`${INVALID_GOODS_ID}`);
+  if (goodsFromDB.data.length != goods.length) throw Error(`${errorCode.INVALID_GOODS_ID}`);
   return context;
 };
 

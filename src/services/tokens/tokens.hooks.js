@@ -1,11 +1,12 @@
 const { createToken } = require(`../../hooks/before/token/createMakeToken.js`);
+const { getAToken } = require(`../../hooks/after/token/getAToken.js`);
 const { disallow } = require('feathers-hooks-common');
 
 module.exports = {
   before: {
     all: [],
     find: [disallow()],
-    get: [disallow()],
+    get: [],
     create: [createToken],
     update: [disallow()],
     patch: [disallow()],
@@ -15,7 +16,7 @@ module.exports = {
   after: {
     all: [],
     find: [],
-    get: [],
+    get: [getAToken],
     create: [],
     update: [],
     patch: [],
