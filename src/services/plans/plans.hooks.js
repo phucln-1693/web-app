@@ -5,7 +5,7 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [getAPlan],
+    get: [],
     create: [createPlan],
     update: [],
     patch: [],
@@ -15,7 +15,7 @@ module.exports = {
   after: {
     all: [],
     find: [getAllPlans],
-    get: [],
+    get: [getAPlan],
     create: [],
     update: [],
     patch: [],

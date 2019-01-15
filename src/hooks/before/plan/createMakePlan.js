@@ -7,8 +7,6 @@ const error = require(`../../../constants/errors`);
 //   currency: `usd`
 // };
 
-// validate interval: enum = [day, week, month, year];
-// validate planModel - object Plan
 const createPlan = async context => {
   const { data } = context;
   if (!data.amount || !data.interval || !data.product || !data.currency) throw Error(`${error.INVALID_PARAM}`);

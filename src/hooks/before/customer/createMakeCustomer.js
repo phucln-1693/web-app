@@ -6,9 +6,8 @@ const error = require(`../../../constants/errors`);
 
 const createCustomer = async context => {
   const { data } = context;
-  const { source } = data;
-  if (!source) throw Error(`${error.INVALID_PARAM}`);
-  await stripe.customers.create({ source })
+  if (!data.source) throw Error(`${error.INVALID_PARAM}`);
+  await stripe.customers.create(data)
     .then(customer => {
       context.result = customer;
       return context;

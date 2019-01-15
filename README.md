@@ -33,11 +33,21 @@ to this value:
 
 
 ## A demo available at:
-    ```
-        https://boiling-badlands-29297.herokuapp.com/ | https://git.heroku.com/boiling-badlands-29297.git
-    ```
+    
+    https://boiling-badlands-29297.herokuapp.com/ | https://git.heroku.com/boiling-badlands-29297.git
+    
 
-The first time you call post-man or curl will be a fews second because Heroku idle. The other will be quickly.
+
+The first time you call post-man or curl will be a few second because Heroku idle. The other should be quickly.
+
+
+
+This repo support charge but now focus on payment with plan.
+### Flow:
+1. Create User
+2. Create Token (use when create customer)
+3. Create plan
+4. Create subscription
 ### POST MAN:
 1. USER
     * GET-ALL user

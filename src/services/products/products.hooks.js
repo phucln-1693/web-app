@@ -7,7 +7,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [createProd],
     update: [],
     patch: [],
     remove: []
@@ -17,7 +17,7 @@ module.exports = {
     all: [],
     find: [getAllProds],
     get: [getAProd],
-    create: [createProd],
+    create: [],
     update: [],
     patch: [],
     remove: []

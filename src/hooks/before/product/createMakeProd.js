@@ -1,16 +1,13 @@
 const stripe = require(`../../../../config/stripe.js`);
 const error = require(`../../../constants/errors`);
 // const prodModel = {
-//   prodName : `product01`,
-//   prodType: `service`
+//   name : `product01`,
+//   type: `service`
 // };
 const createProd = async context => {
   const { data } = context;
-  if (!data.prodName || !data.prodType) throw Error(`${error.INVALID_PARAM}`);
-  await stripe.products.create({
-    name: data.prodName,
-    type: data.prodType
-  })
+  if (!data.name || !data.type) throw Error(`${error.INVALID_PARAM}`);
+  await stripe.products.create(data)
     .then(prod => {
       context.result = prod;
       return context;
