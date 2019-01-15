@@ -1,3 +1,5 @@
+const { getAllSub } = require(`../../hooks/after/subscription/findGetAllSubscription.js`);
+const { createSubscription } = require(`../../hooks/before/subscription/createMakeSubscription.js`);
 
 
 module.exports = {
@@ -5,7 +7,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [createSubscription],
     update: [],
     patch: [],
     remove: []
@@ -13,7 +15,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [getAllSub],
     get: [],
     create: [],
     update: [],
