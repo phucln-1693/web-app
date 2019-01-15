@@ -13,4 +13,4 @@ const getAToken = async context => {  // maybe check user role
     });
 };
 
-module.exports = { getAToken };
+module.exports = { getAToken }; 

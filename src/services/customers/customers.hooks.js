@@ -1,3 +1,4 @@
+const { disallow } = require('feathers-hooks-common');
 const { createCustomer } = require(`../../hooks/before/customer/createMakeCustomer.js`);
 
 module.exports = {
@@ -6,9 +7,9 @@ module.exports = {
     find: [],
     get: [],
     create: [createCustomer],
-    update: [],
-    patch: [],
-    remove: []
+    update: [disallow()],
+    patch: [disallow()],
+    remove: [disallow()]
   },
 
   after: {
@@ -16,9 +17,9 @@ module.exports = {
     find: [],
     get: [],
     create: [],
-    update: [],
-    patch: [],
-    remove: []
+    update: [disallow()],
+    patch: [disallow()],
+    remove: [disallow()]
   },
 
   error: {
