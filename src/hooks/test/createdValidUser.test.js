@@ -1,5 +1,6 @@
 const { validUser } = require(`../before/user/createdValidUser.js`);
 const { MISSING_USER_NAME, CONFLIC_USER_NAME } = require(`../../constants/errors.js`);
+const { USER_ALREADY_EXISTS } = require(`../../constants/entities.js`);
 let context;
 let hook;
 
@@ -26,20 +27,20 @@ describe(`createdValidUser`, () => {
     context.app.service = () => {
       return {
         find: objQuery => {
-          if (objQuery.query.userName === 'userNameDuplicate') return { successCase: false, total: 1 };
+          if (objQuery.query.userName === USER_ALREADY_EXISTS) return { successCase: false, total: 1 };
           else return { successCase: true };
         }
       };
     };
   });
-  
+
   test(`should reject when userName is missing`, async () => {
     context.data = {};
     await expect(hook(context)).rejects.toThrow(MISSING_USER_NAME);
   });
 
   test(`should reject when userName is existed`, async () => {
-    context.data = { userName: `userNameDuplicate` };
+    context.data = { userName: USER_ALREADY_EXISTS };
     await expect(hook(context)).rejects.toThrow(CONFLIC_USER_NAME);
   });
 
