@@ -27,7 +27,7 @@
     "dev": "nodemon src/",
     "start": "node src/",
     "jest": "jest",
-    "test": "jest --forceExit",
+    "test": "jest",
     "test:coverage": "jest --coverage --runInBand --forceExit"
   },
   "dependencies": {
