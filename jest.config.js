@@ -10,8 +10,6 @@ module.exports = {
     '<rootDir>/src/hooks/after/user',
     '<rootDir>/src/hooks/after/charge',
     '<rootDir>/src/hooks/log.js'
-
-
   ],
   clearMocks: true,
   resetMocks: true,
