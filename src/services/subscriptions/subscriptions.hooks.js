@@ -1,6 +1,15 @@
-const { getASub } = require(`../../hooks/after/subscription/getASubscription.js`);
-const { getAllSub } = require(`../../hooks/after/subscription/findGetAllSubscription.js`);
-const { createSubscription } = require(`../../hooks/before/subscription/createMakeSubscription.js`);
+const {
+  getASub
+} = require(`../../hooks/after/subscription/getASubscription.js`);
+const {
+  getAllSub
+} = require(`../../hooks/after/subscription/findGetAllSubscription.js`);
+const {
+  delSubscription
+} = require(`../../hooks/after/subscription/delSubscription.js`);
+const {
+  createSubscription
+} = require(`../../hooks/before/subscription/createMakeSubscription.js`);
 
 
 module.exports = {
@@ -20,7 +29,7 @@ module.exports = {
     get: [getASub],
     create: [],
     update: [],
-    patch: [],
+    patch: [delSubscription],
     remove: []
   },
 
