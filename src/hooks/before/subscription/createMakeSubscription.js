@@ -6,7 +6,7 @@ const error = require(`../../../constants/errors`);
 //   plan: 'plan_ETit72Ku9xD8dH'
 // };
 
-// draft: nextMonth, nextMonth.daysInMonth() <= attendanceClosingDay; .diff
+// draft: nextMonth, nextMonth.daysInMonth() <= attendanceClosingDay; .diff\
 
 const createSubscription = async context => {
   const {
