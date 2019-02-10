@@ -14,15 +14,15 @@ const error = require(`../../../constants/errors`);
 const createSubscription = async context => {
   const { data } = context;
   const { customer, plans } = data;
-  if (!customer || !plans || !Array.isArray(plans) || plans.length == 0) throw Error(`${error.INVALID_PARAM}`);
-  const subObj = {
-    customer,
-    items: []
-  };
-  for (let i = 0; i < plans.length; i++) {
-    const planItem = plans[i];
-    subObj.items.push({ plan: planItem.plan, quantity: planItem.quantity ? planItem.quantity : 1 });
-  }
+  // if (!customer || !plans || !Array.isArray(plans) || plans.length == 0) throw Error(`${error.INVALID_PARAM}`);
+  // const subObj = {
+  //   customer,
+  //   items: []
+  // };
+  // for (let i = 0; i < plans.length; i++) {
+  //   const planItem = plans[i];
+  //   subObj.items.push({ plan: planItem.plan, quantity: planItem.quantity ? planItem.quantity : 1 });
+  // }
   await stripe.subscriptions.create(subObj)
     .then(sub => {
       context.result = sub;
